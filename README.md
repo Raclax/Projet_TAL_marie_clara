@@ -19,6 +19,8 @@ Le corpus donné contient 7 colonnes :
 | recette_84191.xml     | Roulé à la confiture de lait | Dessert | Moyennement difficile | Bon marché | - Pour la garniture: - 1 boîte de lait concent... |    La veille, préparer de la confiture de lait en... |
 
 
+La tâche va consister à prédire le **type** de recette ('Entrée', 'Plat principal', 'Dessert'). 
+
 ## Statistiques corpus
 
 ### Répartition des documents
