@@ -33,6 +33,15 @@ Le fichier 'train' a été subdivisé en 'train' et 'validation'. Nous avons cho
 
 ## Méthodes proposées
 
+### Le prétraitement
+Nous avons décidé d'appliquer du prétraitement sur la base de donnée avant de commencer l'analyse. 
+
+**Création de la colonne 'test'**
+Après analyse du dataset, nous en avons déduit que les colonnes les plus intéressentes pour une analyse textuelle serait les colonnes 'titre' et 'recette'. Nous es avons donc concaténées dans une seule colonne, 'text', pour pouvoir faciliter l'analyse.
+
+**Stopwords et mots en minuscule**
+Un autre élément pour faciliter l'analyse, nous avons également retiré les stop-words et chngé toutes les majuscules en minuscules. Grâce à cela, nous avons donc un text qui sera plus facile a analyser pour es différents modèles.
+
 ### Run1: baseline (méthode de référence)
 
 - Le descripteur utilisé est une colonne 'text' qui est une concaténation des colonnes 'titre' et 'recette'. Nous avons jugés que c'étaient les colonnes les plus intéressantes pour mener une étude textuelle. 
@@ -50,9 +59,9 @@ Le fichier 'train' a été subdivisé en 'train' et 'validation'. Nous avons cho
 | ------------------ | --------:|
 | baseline           |   0.33   |
 | Arbre de décision  |   0.77   |
-| SVM                |   0.86   |
-| Random forest      |   0.78   |
-| Naive Bayes        |   0.67   |
+| SVM                |   0.87   |
+| Random forest      |   0.79   |
+| Naive Bayes        |   0.69   |
 
 ### Analyse de résultats
 	
