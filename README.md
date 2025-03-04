@@ -50,7 +50,7 @@ Un autre élément pour faciliter l'analyse, nous avons également retiré les s
 
 ### Run2: Arbre de décision
 
-Un arbre de décision est un modèle de prédiction qui utilise une structure arborescente pour prendre des décisions basées sur les valeurs des caractéristiques d'entrée. Chaque nœud interne représente une caractéristique, chaque branche représente une règle de décision, et chaque feuille représente un résultat.
+Un arbre de décision est un modèle de prédiction qui utilise une structure arborescente pour prendre des décisions basées sur les valeurs des caractéristiques d'entrée. Chaque nœud interne représente une caractéristique, chaque branche représente une règle de décision, et chaque feuille représente un résultat. POur aviter le phénomène d'overfitting, nous avons décidé de fixer la profondeur maximale de l'arbre à 10.
 
 ### Run3: SVM  (Support Vector Machine)
 
@@ -78,23 +78,22 @@ Le classifieur Naive Bayes est basé sur le théorème de Bayes avec une hypoth�
 	
 #### Arbre de décision
 
-Il n'y a aucun document avec un score de 0, et 72 documents entre 0.9 et 1.0. On compte 246 documents entre 0.5 et 0.6 mais l'interval le plus remplis est entre 0.7 et 0.8 (276 documents). Globalement le modèle a l'air assez sur de la façon dont il a identifié les différentes catégories, même si les résultats ne sont pas très bons pour les classes 'Plat principal' et 'Entrée'. 
+Il n'y a aucun document entre les scores de 0.0 et 0.4, et 689 documents entre 0.9 et 1.0, qui est l'interval le plus rempli. On compte 134 documents entre 0.4 et 0.5. On voit que bien que la profondeur soit de 10, l'arbre reste déja très confiant sur ses prédictions, avec une majorité des scores entre 0.9 et 1.0. Pour aurant, le modèle n'est pas si bon : il casse beaucoup d'entrées en plat et vice versa. 
 
 #### SVM
 
-
+Il n'y a aucun document entre les scores de 0.0 et 0.4, et seulement 8 enytre 0.4 et 0.5. La catégorie la plus remplie est entre 0.9 et 1.0, avec 834 documents. Le modèle a l'air très confiant confiant sur ses prédictions, puisque les probabilités entre 0.5 et 0.9 ne dépassent pas les 190/intervalles. Par ailleurs, on voit c=que ce modèle propose une bonne classification des recettes : il a une f-mesure pondérée de 0.87 et ne commet relativement que peu d'erreurs de classements entre les entrées et les plats. 
 
 #### Random forest
 
-
+Il n'y a aucun document entre les scores de 0.0 et 0.3, et 93 documents entre 0.9 et 1.0. L'interval le plus rempli est entre 0.8 et 0.9 avec 362 documents. Ici, le modèle a  l'air moyennement confiant sur la façon dont il a différencé les catégories, puisque les brobabilités sont assez bien réparties entre 0.5 et 0.9. Par ailleurs, les résultats ne sont pas très bons pour la classe 'Entrée', qui est beaucoup confondue avec la classe 'Plat principal'. 
 
 #### Naive Bayes
 
+Encore une fois, aucun document a un score inférieur à 0.3. Nous avons 32 documents entre 0.4 et 0.5, 79 documents entre 0.5 et 0.6. Le score est très évelé pour la grande majorité des documents : pour un score entre 0.9 et 1 nous avons 775 documents. La répartition est exponentielle. Le modèle à l'air très sur de ses prédictions mais il a prédit presque toutes les entrées en plat. 
 
+#### Observations générales
 
+Globalement, la catégorie dessert se différencie très bien des autres, et est très peu sujette à des erreurs. En revanche, sur presque tous les modèles (sauf SVM), les catégories entrées et plats sont très mal différenciées, et sont donc souvent mal classées. Cela vient surement du fait que les deux catégories présentent des plats salés avec beaucoup d'ingrédients en commun. On peut noter que c'est souvent les entres qui sont classées en plat, plu sque l'inverse. Cela peut etre lié au fait que le corpus contient plus de recettes de plats que d'entrées. 
 
-	Pistes d'analyse:
-	* Combien de documents ont un score de 0 ? de 0.5 ? de 1 ? (Courbe ROC)
-	* Y-a-t-il des régularités dans les document bien/mal classifiés ?
-	* Où est-ce que l'approche se trompe ? (matrice de confusion)
-	* Si votre méthode le permet: quels sont les descripteurs les plus décisifs ?
+On peut sans trop de difficultés estimer que le modèle qui fonctionne le mieux pour cette tâche est SVM. 
