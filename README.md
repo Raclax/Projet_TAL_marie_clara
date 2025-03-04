@@ -37,7 +37,7 @@ Le fichier 'train' a été subdivisé en 'train' et 'validation'. Nous avons cho
 Nous avons décidé d'appliquer du prétraitement sur la base de donnée avant de commencer l'analyse. 
 
 **Création de la colonne 'text'**
-Après analyse du dataset, nous en avons déduit que les colonnes les plus intéressentes pour une analyse textuelle serait les colonnes 'titre' et 'recette'. Nous es avons donc concaténées dans une seule colonne, 'text', pour pouvoir faciliter l'analyse.
+Après analyse du dataset, nous en avons déduit que les colonnes les plus intéressentes pour une analyse textuelle serait les colonnes 'titre' et 'recette'. Nous es avons donc concaténées dans une seule colonne, 'text', pour pouvoir faciliter l'analyse. NOus avons décide de ne pas inclure la colonne 'ingrédients' d'abord car elle contient beaucoup de chiffres ce qui aurait pu poser problèmes sans être plus pour une analyse, et de plus les ingrédients sont tous re-cités dans la recette, docn ce n'est même pas très utile. 
 
 **Stopwords et mots en minuscule**
 Un autre élément pour faciliter l'analyse, nous avons également retiré les stop-words et chngé toutes les majuscules en minuscules. Grâce à cela, nous avons donc un text qui sera plus facile a analyser pour es différents modèles.
@@ -76,6 +76,23 @@ Le classifieur Naive Bayes est basé sur le théorème de Bayes avec une hypoth�
 
 ### Analyse de résultats
 	
+#### Arbre de décision
+
+Il n'y a aucun document avec un score de 0, et 72 documents entre 0.9 et 1.0. On compte 246 documents entre 0.5 et 0.6 mais l'interval le plus remplis est entre 0.7 et 0.8 (276 documents). Globalement le modèle a l'air assez sur de la façon dont il a identifié les différentes catégories, même si les résultats ne sont pas très bons pour les classes 'Plat principal' et 'Entrée'. 
+
+#### SVM
+
+
+
+#### Random forest
+
+
+
+#### Naive Bayes
+
+
+
+
 	Pistes d'analyse:
 	* Combien de documents ont un score de 0 ? de 0.5 ? de 1 ? (Courbe ROC)
 	* Y-a-t-il des régularités dans les document bien/mal classifiés ?
