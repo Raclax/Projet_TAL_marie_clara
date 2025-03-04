@@ -14,7 +14,7 @@ Le corpus donné contient 7 colonnes :
 - **recette** : la recette du plat
 
 
-| doc_id             | titre | type | f1 difficulté | cout | f1 ingrédients |  recette | 
+| doc_id             | titre | type |  difficulté | cout |  ingrédients |  recette | 
 | ------------------ | ----- |------| --------------| -----| ---------------| -------- |
 | recette_84191.xml     | Roulé à la confiture de lait | Dessert | Moyennement difficile | Bon marché | - Pour la garniture: - 1 boîte de lait concent... |    La veille, préparer de la confiture de lait en... |
 
