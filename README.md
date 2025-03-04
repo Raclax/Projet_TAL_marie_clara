@@ -12,9 +12,11 @@ Le corpus donné contient 7 colonnes :
 - **cout** : classé entre bon marché, moyen et assez cher
 -  **ingrédients** : la liste des ingrédients
 - **recette** : la recette du plat
-| Run                | f1 Score | Run                | f1 Score | Run                | f1 Score | | Run                | 
-| ------------------ | -------- |--------| --------| --------| --------| --------|
-| recette_84191.xml	 | Roulé à la confiture de lait | Dessert | Moyennement difficile | Bon marché | - Pour la garniture: - 1 boîte de lait concent... |	La veille, préparer de la confiture de lait en... |
+
+
+| doc_id             | titre | type | f1 difficulté | cout | f1 ingrédients |  recette | 
+| ------------------ | ----- |------| --------------| -----| ---------------| -------- |
+| recette_84191.xml     | Roulé à la confiture de lait | Dessert | Moyennement difficile | Bon marché | - Pour la garniture: - 1 boîte de lait concent... |    La veille, préparer de la confiture de lait en... |
 
 
 ## Statistiques corpus
