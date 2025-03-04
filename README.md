@@ -36,7 +36,7 @@ Le fichier 'train' a été subdivisé en 'train' et 'validation'. Nous avons cho
 ### Le prétraitement
 Nous avons décidé d'appliquer du prétraitement sur la base de donnée avant de commencer l'analyse. 
 
-**Création de la colonne 'test'**
+**Création de la colonne 'text'**
 Après analyse du dataset, nous en avons déduit que les colonnes les plus intéressentes pour une analyse textuelle serait les colonnes 'titre' et 'recette'. Nous es avons donc concaténées dans une seule colonne, 'text', pour pouvoir faciliter l'analyse.
 
 **Stopwords et mots en minuscule**
@@ -44,14 +44,25 @@ Un autre élément pour faciliter l'analyse, nous avons également retiré les s
 
 ### Run1: baseline (méthode de référence)
 
-- Le descripteur utilisé est une colonne 'text' qui est une concaténation des colonnes 'titre' et 'recette'. Nous avons jugés que c'étaient les colonnes les plus intéressantes pour mener une étude textuelle. 
+- Le descripteur utilisé est une colonne 'text' qui est une concaténation des colonnes 'titre' et 'recette'. Nous avons jugés que c'étaient les colonnes les plus intéressantes pour mener une étude textuelle. C'est ce descripteur qui est utilisé pour tous les autres modèles également.
 
 - Le classifieur utilisé est donc de prédire aléatoirement la classe de chaque élément lu dans la colonne 'text"
 
 ### Run2: Arbre de décision
-### Run3: SVM
+
+Un arbre de décision est un modèle de prédiction qui utilise une structure arborescente pour prendre des décisions basées sur les valeurs des caractéristiques d'entrée. Chaque nœud interne représente une caractéristique, chaque branche représente une règle de décision, et chaque feuille représente un résultat.
+
+### Run3: SVM  (Support Vector Machine)
+
+Un SVM est un classifieur qui trouve l'hyperplan optimal séparant les différentes classes dans un espace de caractéristiques. Il utilise des vecteurs de support pour maximiser la marge entre les classes.
+
 ### Run4: Random forest
+
+Une forêt aléatoire est un ensemble de nombreux arbres de décision entraînés sur des sous-ensembles aléatoires des données d'entraînement. Les prédictions sont faites en agrégeant les prédictions de tous les arbres. 
+
 ### Run5: Naive Bayes
+
+Le classifieur Naive Bayes est basé sur le théorème de Bayes avec une hypothèse d'indépendance naïve entre les caractéristiques. Il calcule la probabilité qu'une instance appartienne à chaque classe et choisit la classe avec la probabilité la plus élevée.
 
 ## Résultats
 
