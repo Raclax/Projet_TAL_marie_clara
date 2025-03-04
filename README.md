@@ -4,7 +4,18 @@ POINT Marie - SACHOT Clara
 
 ## Description de la tâche
 
-	1 ou 2 exemples de documents (avec leur identifiant)
+Le corpus donné contient 7 colonnes : 
+- **doc_id** : un identifiant unique à chaque recette
+- **titre** : le nom du plat
+- **type** : si il s'agit d'une entre, d'un plat ou d'un dessert
+- **difficulté** : classé sur une achelle de facile à difficile
+- **cout** : classé entre bon marché, moyen et assez cher
+-  **ingrédients** : la liste des ingrédients
+- **recette** : la recette du plat
+| Run                | f1 Score | Run                | f1 Score | Run                | f1 Score | | Run                | 
+| ------------------ | -------- |--------| --------| --------| --------| --------|
+| recette_84191.xml	 | Roulé à la confiture de lait | Dessert | Moyennement difficile | Bon marché | - Pour la garniture: - 1 boîte de lait concent... |	La veille, préparer de la confiture de lait en... |
+
 
 ## Statistiques corpus
 
@@ -62,7 +73,7 @@ Une forêt aléatoire est un ensemble de nombreux arbres de décision entraîné
 
 ### Run5: Naive Bayes
 
-Le classifieur Naive Bayes est basé sur le théorème de Bayes avec une hypothèse d'indépendance naïve entre les caractéristiques. Il calcule la probabilité qu'une instance appartienne à chaque classe et choisit la classe avec la probabilité la plus élevée.
+Le classifieur Naive Bayes est basé sur le théorème de Bayes avec une hypothèse d'indépendance naïve entre les caractéristiques. Il calcule la probabilité qu'une instance appartienne à chaque classe et choisit la classe avec la probabilité la plus élevée. On peut noter que c'est celui avec le pire rappel pour les entrées. Incidement, la précision des plats est donc aussi très mauvaise. 
 
 ## Résultats
 
