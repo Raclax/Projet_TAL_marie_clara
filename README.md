@@ -58,25 +58,29 @@ Après analyse du dataset, nous en avons déduit que les colonnes les plus inté
 
 Un autre élément pour faciliter l'analyse, nous avons également retiré les stop-words et changé toutes les majuscules en minuscules. Grâce à cela, nous avons donc un texte qui sera plus facile a analyser pour les différents modèles.
 
-### Run1: baseline (méthode de référence)
+### Les descripteurs
+
+Pour ce travail, nous avons décidé de comparer deux descripteurs : TF-IDF et Word2Vec. TF-IDF est plutôt axé sur le compte de mots pour pondérer leur importance mais Word2Vec permet de capturer les relations sémentiques entre les mots d'une phrase. 
+
+#### Run1: baseline (méthode de référence)
 
 - Le descripteur utilisé est une colonne 'text' qui est une concaténation des colonnes 'titre' et 'recette'. Nous avons jugés que ces colonnes étaient les plus intéressantes pour mener une étude textuelle. C'est ce descripteur qui est utilisé pour tous les autres modèles également.
 
 - Le classifieur utilisé est donc de prédire aléatoirement la classe de chaque élément lu dans la colonne 'text"
 
-### Run2: Arbre de décision
+#### Run2: Arbre de décision
 
 Un arbre de décision est un modèle de prédiction qui utilise une structure arborescente pour prendre des décisions basées sur les valeurs des caractéristiques d'entrée. Chaque nœud interne représente une caractéristique, chaque branche représente une règle de décision, et chaque feuille représente un résultat. Pour éviter le phénomène d'overfitting, nous avons décidé de fixer la profondeur maximale de l'arbre à 10.
 
-### Run3: SVM  (Support Vector Machine)
+#### Run3: SVM  (Support Vector Machine)
 
 Un SVM est un classifieur qui trouve l'hyperplan optimal séparant les différentes classes dans un espace de caractéristiques. Il utilise des vecteurs de support pour maximiser la marge entre les classes.
 
-### Run4: Random forest
+#### Run4: Random forest
 
 Une forêt aléatoire est un ensemble de nombreux arbres de décision entraînés sur des sous-ensembles aléatoires des données d'entraînement. Les prédictions sont faites en agrégeant les prédictions de tous les arbres. 
 
-### Run5: Naive Bayes
+#### Run5: Naive Bayes
 
 Le classifieur Naive Bayes est basé sur le théorème de Bayes avec une hypothèse d'indépendance naïve entre les caractéristiques. Il calcule la probabilité qu'une instance appartienne à chaque classe et choisit la classe avec la probabilité la plus élevée.
 
@@ -85,31 +89,61 @@ Le classifieur Naive Bayes est basé sur le théorème de Bayes avec une hypoth�
 | Run                | f1 Score |
 | ------------------ | --------:|
 | baseline           |   0.33   |
+
+
+**TF-IDF**
+
+| Run                | f1 Score |
+| ------------------ | --------:|
 | Arbre de décision  |   0.77   |
 | SVM                |   0.87   |
 | Random forest      |   0.79   |
 | Naive Bayes        |   0.69   |
 
+
+**Word2Vec**
+
+| Run                | f1 Score |
+| ------------------ | --------:|
+| Arbre de décision  |   0.72   |
+| SVM                |   0.81   |
+| Random forest      |   0.79   |
+| Naive Bayes        |   0.64   |
+
+
+
+
 ### Analyse de résultats
+
+#### Modèles
 	
-#### Arbre de décision
+Pour ce qui s'agit de la comparaison des modèles, nous allon la baser sur les résultats obtenus avec TF-IDF, car c'est le descripteur qui donne les meilleurs f-mesures et donc les meilleurs résultats. 
+
+**Arbre de décision**
 
 Il n'y a aucun document entre les scores de 0.0 et 0.4, et 689 documents entre 0.9 et 1.0, qui est l'intervalle le plus rempli. On compte 134 documents entre 0.4 et 0.5. Bien que la profondeur soit de 10, l'arbre reste déja très confiant sur ses prédictions, avec une majorité des scores entre 0.9 et 1.0. Pour autant, le modèle n'est pas si bon : il classe beaucoup d'entrées en plat et vice versa. 
 
-#### SVM
+**SVM**
 
 Il n'y a aucun document entre les scores de 0.0 et 0.4, et seulement 8 entre 0.4 et 0.5. La catégorie la plus remplie est entre 0.9 et 1.0, avec 834 documents. Le modèle a l'air très confiant sur ses prédictions, puisque les probabilités entre 0.5 et 0.9 ne dépassent pas les intervalles 0.9 à 1. Par ailleurs, on voit que ce modèle propose une bonne classification des recettes : il a une f-mesure pondérée de 0.87 et ne commet relativement que peu d'erreurs de classements entre les entrées et les plats. 
 
-#### Random forest
+**Random forest**
 
 Il n'y a aucun document entre les scores de 0.0 et 0.3, et 93 documents entre 0.9 et 1.0. L'intervalle le plus rempli est entre 0.8 et 0.9 avec 362 documents. Ici, le modèle a  l'air moyennement confiant sur la façon dont il a différencé les catégories, puisque les probabilités sont assez bien réparties entre 0.5 et 0.9. Par ailleurs, les résultats ne sont pas très bons pour la classe 'Entrée', qui est beaucoup confondue avec la classe 'Plat principal'. 
 
-#### Naive Bayes
+**Naive Bayes**
 
 Encore une fois, aucun document a un score inférieur à 0.3. Nous avons 32 documents entre 0.4 et 0.5 et 79 documents entre 0.5 et 0.6. Le score est très évelé pour la grande majorité des documents : pour un score entre 0.9 et 1 nous avons 775 documents. La répartition est exponentielle. Le modèle à l'air très sûr de ses prédictions mais il a prédit presque toutes les entrées en plat. On peut noter que c'est celui avec le pire rappel pour les entrées. Incidement, la précision des plats est donc aussi très mauvaise. 
+
+
+
+#### Descripteurs
+
+
 
 #### Observations générales
 
 Globalement, la catégorie dessert se différencie très bien des autres, et est très peu sujette à des erreurs. En revanche, sur presque tous les modèles (sauf SVM), les catégories entrées et plats sont très mal différenciées, et sont donc souvent mal classées. Cela vient sûrement du fait que les deux catégories présentent des plats salés avec beaucoup d'ingrédients en commun. On peut aussi noter que c'est souvent les entrées qui sont classées en plat, plutôt que l'inverse. Cela peut être lié au fait que le corpus contient plus de recettes de plats que d'entrées (environ deux fois plus de plats).
 
 On peut sans trop de difficultés estimer que le modèle qui fonctionne le mieux pour cette tâche est SVM. 
+
