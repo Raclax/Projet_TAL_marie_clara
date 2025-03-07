@@ -113,9 +113,9 @@ Le classifieur Naive Bayes est basé sur le théorème de Bayes avec une hypoth�
 
 
 
-### Analyse de résultats
+## Analyse de résultats
 
-#### Modèles
+### Modèles
 	
 Pour ce qui s'agit de la comparaison des modèles, nous allon la baser sur les résultats obtenus avec TF-IDF, car c'est le descripteur qui donne les meilleurs f-mesures et donc les meilleurs résultats. 
 
@@ -137,16 +137,16 @@ Encore une fois, aucun document a un score inférieur à 0.3. Nous avons 32 docu
 
 
 
-#### Descripteurs
+### Descripteurs
 
 Les comparaisons des f-mesures montre bien que TF-IDF donne de meilleurs résultats que Word2Vec : à part avec random forest ou les valeurs sont les mêmes, pour les mêmes modèles les f-mesures seront meilleurs avec TF-IDF qu'avec Word2Vec. 
 
 Globalement, lorsqu'on observe les matrices de confusion et les courbes ROC, on observe les mêmes tedendences d'erreurs entre les deux descripteurs, c'est à dire à confondre entrée et plat, avec principalement la classification de d'entrées en plats. Les proportions d'erreurs sont assez similaires même si, comme l'ndique la f-mesure, elle est souvent un peu plus importante avec TF-IDF. 
 
-#### Observations générales
+### Observations générales
 
 Globalement, la catégorie dessert se différencie très bien des autres, et est très peu sujette à des erreurs. En revanche, sur presque tous les modèles (sauf SVM), les catégories entrées et plats sont très mal différenciées, et sont donc souvent mal classées. Cela vient sûrement du fait que les deux catégories présentent des plats salés avec beaucoup d'ingrédients en commun. On peut aussi noter que c'est souvent les entrées qui sont classées en plat, plutôt que l'inverse. Cela peut être lié au fait que le corpus contient plus de recettes de plats que d'entrées (environ deux fois plus de plats).
 
 On peut sans trop de difficultés estimer que le modèle qui fonctionne le mieux pour cette tâche est SVM. 
 
-POur ce qui est des descripteurs, c'est avec IT-IFD qu'on obtient les meilleurs résultats. Cela est surement lié au fait que notre jeu de données d'entrainement ne compte que 13 000 lignes, ce qui n'est pas assez pour word2vec pour bien apprendre les relations entre les mots. 
+Pour ce qui est des descripteurs, c'est avec IT-IFD qu'on obtient les meilleurs résultats. Cela est surement lié au fait que notre jeu de données d'entrainement ne compte que 13 000 lignes, ce qui n'est pas assez pour word2vec pour bien apprendre les relations entre les mots. 
