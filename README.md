@@ -57,6 +57,8 @@ Un autre élément pour faciliter l'analyse, nous avons également retiré les s
 
 Pour ce travail, nous avons décidé de comparer deux descripteurs : TF-IDF et Word2Vec. TF-IDF est plutôt axé sur le compte de mots pour pondérer leur importance mais Word2Vec permet de capturer les relations sémentiques entre les mots d'une phrase. 
 
+Nous considérons que *train* est suffisament grand pour contenir tout le vocabulaire, donc la vectorisation a été faite sur les données *train* sans ajouter les données *test*.
+
 #### Run1: baseline (méthode de référence)
 
 - Le descripteur utilisé est une colonne 'text' qui est une concaténation des colonnes 'titre' et 'recette'. Nous avons jugés que ces colonnes étaient les plus intéressantes pour mener une étude textuelle. C'est ce descripteur qui est utilisé pour tous les autres modèles également.
